@@ -43,6 +43,8 @@ jobs:
         run: ./yq -i e '.version = "${{ env.RELEASE_VERSION }}"' charts/timescaledb-single/Chart.yaml
       - name: Set up Helm
         uses: azure/setup-helm@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Package Helm chart
         run: |
           helm dependency update ./charts/timescaledb-single
@@ -56,7 +58,7 @@ jobs:
       - name: Update chart repo
         run: |
           cd charts
-          cp ../helm-charts-*.tgz ./
+          cp ../timescaledb-single-*.tgz ./
           helm repo index --merge index.yaml .
       - name: Push changes to chart repo
         uses: stefanzweifel/git-auto-commit-action@v4
