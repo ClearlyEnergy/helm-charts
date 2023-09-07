@@ -54,7 +54,6 @@ jobs:
         with:
           repository: "${{ github.repository_owner }}/charts"
           path: charts
-          token: "${{ secrets.ANSIBLE_ACCESS_TOKEN }}"
       - name: Update chart repo
         run: |
           cd charts
