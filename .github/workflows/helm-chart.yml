@@ -56,7 +56,7 @@ jobs:
       - name: Update chart repo
         run: |
           cd charts
-          cp ../helm-charts-*.tgz ./
+          cp ../timescaledb-single-*.tgz ./
           helm repo index --merge index.yaml .
       - name: Push changes to chart repo
         uses: stefanzweifel/git-auto-commit-action@v4
