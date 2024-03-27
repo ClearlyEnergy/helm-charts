@@ -24,7 +24,7 @@ data:
     [poddb]
     pg1-port=5432
     pg1-host-user=postgres
-    pg1-path={{ template "data_directory" . }}
+    pg1-path=/var/lib/postgresql/data
     pg1-socket-path=/var/run/postgresql
 
     link-all=y
