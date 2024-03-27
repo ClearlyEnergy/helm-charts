@@ -165,6 +165,10 @@ spec:
             echo "*:*:*:postgres:${PATRONI_SUPERUSER_PASSWORD}" >> ${HOME}/.pgpass
             chmod 0600 ${HOME}/.pgpass
 
+            if ! test -f ${HOME}/.pgpass.patroni; then
+              echo "${PATRONI_KUBERNETES_POD_IP}:${BEAM_DB_SERVICE_PORT}:*:standby:${PATRONI_REPLICATION_PASSWORD}" >> ${HOME}/.pgpass.patroni
+              chmod 0600 ${HOME}/.pgpass.patroni
+            fi
             export PATRONI_POSTGRESQL_PGPASS="${HOME}/.pgpass.patroni"
 
             exec patroni /etc/timescaledb/patroni.yaml
