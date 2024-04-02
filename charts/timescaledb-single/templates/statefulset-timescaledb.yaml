@@ -206,7 +206,7 @@ spec:
             fieldRef:
               fieldPath: metadata.name
         - name: PATRONI_POSTGRESQL_DATA_DIR
-          value: {{ include "data_directory" . | quote }}
+          value: "/var/lib/postgresql/data"
         - name: PATRONI_KUBERNETES_NAMESPACE
           value: {{ $.Release.Namespace }}
         - name: PATRONI_KUBERNETES_LABELS
